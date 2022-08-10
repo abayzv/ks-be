@@ -16,7 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('no_ref');
-            $table->string('pembayaran');
+            $table->string('payment');
             $table->timestamps();
         });
     }

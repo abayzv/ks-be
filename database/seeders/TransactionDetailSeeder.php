@@ -18,6 +18,19 @@ class TransactionDetailSeeder extends Seeder
             "transaction_id" => 1,
             "product_id" =>1,
             "quantity" => 3,
+            "sablon_type" => 1
+        ]);
+        TransactionDetail::create([
+            "transaction_id" => 1,
+            "product_id" =>2,
+            "quantity" => 1,
+            "sablon_type" => 1
+        ]);
+        TransactionDetail::create([
+            "transaction_id" => 2,
+            "product_id" =>4,
+            "quantity" => 1,
+            "sablon_type" => 2
         ]);
     }
 }

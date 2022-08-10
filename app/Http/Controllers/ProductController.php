@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -26,34 +27,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'category' => 'required',
-            'grade' => 'required',
-            'type' => 'required',
-            'size' => 'required',
-            'color' => 'required',
-            'price' => 'required',
-            'stock' => 'required',
-        ],
-        [
-            'category.required' => 'Category tidak boleh kosong',
-            'grade.required' => 'Grade tidak boleh kosong',
-            'type.required' => 'Type tidak boleh kosong',
-            'size.required' => 'Size tidak boleh kosong',
-            'color.required' => 'Color tidak boleh kosong',
-            'price.required' => 'Price tidak boleh kosong',
-            'stock.required' => 'Stock tidak boleh kosong',
-        ]);
+        $validated = $request->validate(
+            [
+                'category' => 'required',
+                'grade' => 'required',
+                'type' => 'required',
+                'size' => 'required',
+                'color' => 'required',
+                'price' => 'required',
+                'stock' => 'required',
+            ],
+            [
+                'category.required' => 'Nama tidak boleh kosong',
+                'grade.required' => 'Kualitas tidak boleh kosong',
+                'type.required' => 'Lengan tidak boleh kosong',
+                'size.required' => 'Ukuran tidak boleh kosong',
+                'color.required' => 'Warna tidak boleh kosong',
+                'price.required' => 'Harga tidak boleh kosong',
+                'stock.required' => 'Stock tidak boleh kosong',
+            ]
+        );
 
-        if($validated)
-        {
+        if ($validated) {
             try {
                 $data = [
-                    "category" => $request->category,
+                    "category" => ucwords(Str::lower($request->category)),
                     "grade" => $request->grade,
                     "type" => $request->type,
                     "size" => $request->size,
-                    "color" => $request->color,
+                    "color" => ucwords(Str::lower($request->color)),
                     "price" => $request->price,
                     "stock" => $request->stock,
                 ];
@@ -63,7 +65,6 @@ class ProductController extends Controller
                 return response()->json(['status' => 'error', 'message' => 'Product gagal ditambahkan']);
             }
         }
-        
     }
 
     /**

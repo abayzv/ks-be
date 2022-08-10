@@ -20,7 +20,6 @@ use App\Models\Product;
 use App\Models\Transaction;
 
 Route::middleware('auth:sanctum')->group(function () {
-
 });
 Route::get('profile/{user:username}', ProfileInformationController::class);
 Route::get('me', AuthUserController::class);

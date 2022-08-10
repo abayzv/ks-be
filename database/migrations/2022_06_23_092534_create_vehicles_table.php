@@ -13,14 +13,14 @@ class CreateVehiclesTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->string('category');
-            $table->string('year');
-            $table->timestamps();
-        });
+        // Schema::create('vehicles', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name');
+        //     $table->string('slug')->unique();
+        //     $table->string('category');
+        //     $table->string('year');
+        //     $table->timestamps();
+        // });
     }
 
     /**

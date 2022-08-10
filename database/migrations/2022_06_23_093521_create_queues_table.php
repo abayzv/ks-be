@@ -13,15 +13,15 @@ class CreateQueuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('queues', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('customer_id');
-            $table->foreignId('service_id');
-            $table->foreignId('mechanic_id');
-            $table->foreignId('vehicle_id');
-            $table->string('status');
-            $table->timestamps();
-        });
+        // Schema::create('queues', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignId('customer_id');
+        //     $table->foreignId('service_id');
+        //     $table->foreignId('mechanic_id');
+        //     $table->foreignId('vehicle_id');
+        //     $table->string('status');
+        //     $table->timestamps();
+        // });
     }
 
     /**

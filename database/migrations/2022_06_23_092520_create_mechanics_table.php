@@ -13,13 +13,13 @@ class CreateMechanicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mechanics', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('phone');
-            $table->boolean('isReady');
-            $table->timestamps();
-        });
+        // Schema::create('mechanics', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name');
+        //     $table->string('phone');
+        //     $table->boolean('isReady');
+        //     $table->timestamps();
+        // });
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSablonTypeToTransactionDetailsTable extends Migration
+class CreateSablonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddSablonTypeToTransactionDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::table('transaction_details', function (Blueprint $table) {
-            $table->foreignId('sablon_type')->default(1);
+        Schema::create('sablons', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('category');
+            $table->integer('price');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddSablonTypeToTransactionDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::table('transaction_details', function (Blueprint $table) {
-            $table->dropColumn('sablon_type');
-        });
+        Schema::dropIfExists('sablons');
     }
 }

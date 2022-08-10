@@ -13,9 +13,9 @@ class AddImageUrlToMechanicsTable extends Migration
      */
     public function up()
     {
-        Schema::table('mechanics', function (Blueprint $table) {
-            $table->text('ImageUrl');
-        });
+        // Schema::table('mechanics', function (Blueprint $table) {
+        //     $table->text('ImageUrl');
+        // });
     }
 
     /**

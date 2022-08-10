@@ -13,9 +13,9 @@ class AddQueueNumberToQueuesTable extends Migration
      */
     public function up()
     {
-        Schema::table('queues', function (Blueprint $table) {
-            $table->integer('queue_number');
-        });
+        // Schema::table('queues', function (Blueprint $table) {
+        //     $table->integer('queue_number');
+        // });
     }
 
     /**

@@ -19,14 +19,18 @@ class TopCategoriesResource extends JsonResource
         // get array keys
         $keys = array_keys($this->resource->toArray());
         $type = $keys[0];
-        $products = Product::where($type, $this[$type])->get();
+        if ($keys[0] != "color") {
+            $products = Product::where($type, $this[$type])->get();
+        } else {
+            $products = Product::where(["color" => $this[$keys[0]], "category" => $this[$keys[1]]])->get();
+        }
         // count transaction by products each category
         $transactions = TransactionDetail::whereIn('product_id', $products->pluck('id'))->get();
         // // sum quantity each transactions by category
         $quantity = $transactions->sum('quantity');
 
         return [
-            'name' => $this[$type],
+            'name' => $keys[0] == "color" ? $this[$type] . " (" . $this[$keys[1]] . ")" : $this[$type],
             'total' => $quantity
         ];
     }
