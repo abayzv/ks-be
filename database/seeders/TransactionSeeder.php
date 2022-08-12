@@ -16,15 +16,33 @@ class TransactionSeeder extends Seeder
     {
         Transaction::create([
             'no_ref' => "INV-09082022-01",
-            'pembayaran' => 'Offline',
+            'customer' => "Bambang",
+            'phone' => "0812341234",
+            'address' => "Jl. Kebon Kacang No. 1",
+            'status' => "Pending",
+            'payment' => "Cash",
+            'down_payment' => "20000",
+            'discount' => "0",
         ]);
         Transaction::create([
             'no_ref' => "INV-09082022-02",
-            'pembayaran' => 'Shopee',
+            'customer' => "Didik",
+            'phone' => "0812341234",
+            'address' => "Jl. Ahmad Yani No. 1",
+            'status' => "Pending",
+            'payment' => "Cash",
+            'down_payment' => "0",
+            'discount' => "0",
         ]);
         Transaction::create([
             'no_ref' => "INV-09082022-03",
-            'pembayaran' => 'Tokopedia',
+            'customer' => "Joko",
+            'phone' => "0812341234",
+            'address' => "Jl. Mega Kuning No. 1",
+            'status' => "Pending",
+            'payment' => "Cash",
+            'down_payment' => "0",
+            'discount' => "0",
         ]);
     }
 }

@@ -16,7 +16,14 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('no_ref');
-            $table->string('payment');
+            $table->string('customer');
+            $table->string('phone');
+            $table->text('address');
+            $table->string('status')->default('Pending');
+            $table->string('payment')->default('Cash');
+            $table->integer('down_payment')->default(0);
+            $table->integer('discount')->default(0);
+            $table->integer('total_payment');
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->foreignId('transaction_id');
             $table->foreignId('product_id');
             $table->integer('quantity');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

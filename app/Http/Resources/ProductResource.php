@@ -17,7 +17,8 @@ class ProductResource extends JsonResource
     {
         $transaction = TransactionDetail::where('product_id', $this->id)->get();
         return [
-            'nama' => $this->category." ".$this->type." ".$this->grade,
+            'id' => $this->id,
+            'nama' => $this->category,
             'kategori' => $this->category,
             'panjang_pendek' => $this->type,
             'kualitas' => $this->grade,

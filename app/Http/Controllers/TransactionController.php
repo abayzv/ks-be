@@ -28,40 +28,44 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'no_ref' => 'required',
-            'pembayaran' => 'required',
-            'product' => 'required',
-        ],
-        [
-            'no_ref.required' => 'No. Ref tidak boleh kosong',
-            'pembayaran.required' => 'Pembayaran tidak boleh kosong',
-            'product.required' => 'Product tidak boleh kosong',
-        ]);
+        $validated = $request->validate(
+            [
+                'nama' => 'required',
+                'hp' => 'required',
+                'alamat' => 'required',
+                'metode_pembayaran' => 'required',
+            ],
+            [
+                'nama.required' => 'Nama Customer wajib di isi',
+                'hp.required' => 'Nomor HP wajib di isi',
+                'alamat.required' => 'Alamat harus di isi',
+                'metode_pembayaran.required' => 'Silahkan pilih jenis pembayaran',
+            ]
+        );
 
-        if($validated){
-           try {
-            DB::beginTransaction();
-            $data = [
-                "no_ref" => $request->no_ref,
-                "pembayaran" => $request->pembayaran,
-            ];
-            $transaction = Transaction::create($data); 
-            foreach ($request->product as $key => $value) {
-                TransactionDetail::create(
-                    [
-                        "transaction_id" => $transaction->id,
-                        "product_id" => $value['id'],
-                        "quantity" => $value['quantity'],
-                    ]
-                );
+        if ($validated) {
+            try {
+                // DB::beginTransaction();
+                // $data = [
+                //     "no_ref" => $request->no_ref,
+                //     "pembayaran" => $request->pembayaran,
+                // ];
+                // $transaction = Transaction::create($data);
+                // foreach ($request->product as $key => $value) {
+                //     TransactionDetail::create(
+                //         [
+                //             "transaction_id" => $transaction->id,
+                //             "product_id" => $value['id'],
+                //             "quantity" => $value['quantity'],
+                //         ]
+                //     );
+                // }
+                // DB::commit();
+                return response()->json(['status' => 'success', 'message' => 'Transaksi Berhasil']);
+            } catch (\Throwable $th) {
+                // DB::rollBack();
+                return response()->json(['status' => 'error', 'message' => 'Transaksi Gagal']);
             }
-            DB::commit();
-            return response()->json(['status' => 'success', 'message' => 'Transaksi Berhasil']);
-           } catch (\Throwable $th) {
-            DB::rollBack();
-            return response()->json(['status' => 'error', 'message' => 'Transaksi Gagal']);
-           }
         }
     }
 
