@@ -36,3 +36,5 @@ Route::apiResource('transaction', TransactionController::class);
 Route::apiResource('products', ProductController::class);
 Route::get('kaostory', [AdminController::class, 'kaostory']);
 Route::apiResource('sablons', SablonController::class);
+Route::get('invoice/{no_ref}', [TransactionController::class, 'getInvoiceByNoRef']);
+Route::post('invoice', [TransactionController::class, 'repayment']);

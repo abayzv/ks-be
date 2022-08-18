@@ -15,6 +15,11 @@ class SablonSeeder extends Seeder
     public function run()
     {
         Sablon::create([
+            "name" => "Tanpa Sablon",
+            "category" => "Polos",
+            "price" => "0"
+        ]);
+        Sablon::create([
             "name" => "DTF 1 Sisi A4",
             "category" => "DTF",
             "price" => "35000"

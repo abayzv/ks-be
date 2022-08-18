@@ -23,6 +23,7 @@ class TransactionSeeder extends Seeder
             'payment' => "Cash",
             'down_payment' => "20000",
             'discount' => "0",
+            'total_payment' => "0",
         ]);
         Transaction::create([
             'no_ref' => "INV-09082022-02",
@@ -33,6 +34,7 @@ class TransactionSeeder extends Seeder
             'payment' => "Cash",
             'down_payment' => "0",
             'discount' => "0",
+            'total_payment' => "20000",
         ]);
         Transaction::create([
             'no_ref' => "INV-09082022-03",
@@ -43,6 +45,7 @@ class TransactionSeeder extends Seeder
             'payment' => "Cash",
             'down_payment' => "0",
             'discount' => "0",
+            'total_payment' => "20000",
         ]);
     }
 }

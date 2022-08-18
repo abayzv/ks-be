@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->string('customer');
             $table->string('phone');
             $table->text('address');
-            $table->string('status')->default('Pending');
+            $table->string('status')->default('Lunas');
             $table->string('payment')->default('Cash');
             $table->integer('down_payment')->default(0);
             $table->integer('discount')->default(0);

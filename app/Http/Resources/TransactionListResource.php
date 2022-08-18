@@ -20,14 +20,22 @@ class TransactionListResource extends JsonResource
         $item = TransactionDetailResource::collection($transactionDetail);
         $grandTotal = 0;
         foreach ($item as $key => $value) {
-            $product = Product::where('id', $value->product_id)->first();
-            $grandTotal = $grandTotal + $value->quantity*$product->price;
+            $grandTotal += $value['sub_total'];
         }
         return [
+            'customer' => $this->customer,
+            'hp' => $this->phone,
+            'alamat' => $this->address,
             'no_ref' => $this->no_ref,
-            'pembayaran' => $this->pembayaran,
+            'status' => $this->status,
+            'pembayaran' => $this->payment,
             'jumlah' => $item->sum('quantity'),
-            'grand_total' => $grandTotal
+            'product' => $item,
+            'diskon' => $this->discount,
+            'dp' => $this->down_payment,
+            'bayar' => $this->total_payment,
+            // format date to dd-mm-yyyy hh:ii
+            'tanggal' => date('d-m-Y H:i', strtotime($this->created_at)),
         ];
     }
 }
